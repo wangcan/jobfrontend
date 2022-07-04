@@ -10,11 +10,11 @@ import user from './user'
 import getters from './getters'
 
 import passportDatabases from '@/applications/passport/database'
-import SixsixDatabases from '@/applications/sixsix/database'
+import double6Databases from '@/applications/double6/database'
 
 let databases = {
   passport: passportDatabases,
-  sixsix: sixsixDatabases,
+  double6: double6Databases,
 }
 //databases = Object.assign(databases, merchantDatabases);
 //databases = Object.assign(databases, passportDatabases);
