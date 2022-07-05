@@ -159,7 +159,7 @@ export default {
       })
     },
     handleLogin() {
-      this.loading = true;
+      //this.loading = true;
       let mobile = '';
       let sendData = {};
       if (this.cur == true) {
@@ -181,14 +181,13 @@ export default {
         sendData = {mobile: mobile, password: password};
       }
       console.log(this.cur, 'cccccccccc', sendData);
-      console.log(mobile, 'mmmmmm');
       let checkMobile = this.checkMobile(mobile);
       if (!checkMobile) {
         this.$message.error("请输入正确的手机号");
         return ;
       }
 
-      login(sendData)
+      /*login(sendData)
         .then((response) => {
         console.log(response, 'rrrrrrrrrrrrr');
           this.$message.success("登录成功");
@@ -196,9 +195,20 @@ export default {
         .catch(e => {
         console.log(response, 'ddddddddddd');
           this.$message.error("网络异常");
+          this.$router.go({ path: this.redirect || '/', query: this.otherQuery })
           console.log(e);
         })
-        .finally(() => (this.sending = false));
+        .finally(() => (this.sending = false));*/
+      this.$store.dispatch('user/loginAction', sendData)
+        .then((response) => {
+        console.log('fffffffffff', response);
+          this.loading = false
+          this.$router.go({ path: this.redirect || '/', query: this.otherQuery })
+        })
+        .catch(() => {
+        console.log('eeeeeeeeeeeeee');
+          this.loading = false
+        })
     }
   }
 };

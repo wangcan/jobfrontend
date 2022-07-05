@@ -15,7 +15,7 @@ export function sendSms(sendData) {
   })
 }
 
-export function login(sendData) {
+export function loginCenter(sendData) {
   let data = {
     'phone': sendData.mobile,
     'smsType': 1,
