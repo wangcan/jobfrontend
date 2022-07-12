@@ -112,7 +112,6 @@ export default {
   methods: {
     onSendSms() {
       this.loginWay = false;
-      console.log('sssss', this.loginForm, 'sss');
       let mobileSignin = this.loginForm.mobileSignin;
       let checkMobile = this.checkMobile(mobileSignin);
       if (!checkMobile) {
@@ -124,13 +123,11 @@ export default {
 
       sendSms({ mobile: mobileSignin })
         .then((response) => {
-        console.log(response, 'rrrrrrrrrrrrr');
           this.$message.success("短信发送成功，请注意查收");
           Cookie.set("last-send-time", new Date());
           this.timer = 60;
         })
         .catch(e => {
-        console.log(response, 'ddddddddddd');
           this.$message.error("网络异常");
           console.log(e);
         })
@@ -164,7 +161,6 @@ export default {
       let sendData = {};
       if (this.cur == true) {
         mobile = this.loginForm.mobileSignin;
-        console.log(mobile, 'sssss');
         let code = this.loginForm.code;
         if (!code) {
           this.$message.error("请输入验证码");
@@ -180,7 +176,6 @@ export default {
         }
         sendData = {mobile: mobile, password: password};
       }
-      console.log(this.cur, 'cccccccccc', sendData);
       let checkMobile = this.checkMobile(mobile);
       if (!checkMobile) {
         this.$message.error("请输入正确的手机号");
@@ -189,11 +184,9 @@ export default {
 
       /*login(sendData)
         .then((response) => {
-        console.log(response, 'rrrrrrrrrrrrr');
           this.$message.success("登录成功");
         })
         .catch(e => {
-        console.log(response, 'ddddddddddd');
           this.$message.error("网络异常");
           this.$router.go({ path: this.redirect || '/', query: this.otherQuery })
           console.log(e);
@@ -201,12 +194,10 @@ export default {
         .finally(() => (this.sending = false));*/
       this.$store.dispatch('user/loginAction', sendData)
         .then((response) => {
-        console.log('fffffffffff', response);
           this.loading = false
-          this.$router.go({ path: this.redirect || '/', query: this.otherQuery })
+          this.$router.go({ path: this.redirect || '/dashboard', query: this.otherQuery })
         })
         .catch(() => {
-        console.log('eeeeeeeeeeeeee');
           this.loading = false
         })
     }
