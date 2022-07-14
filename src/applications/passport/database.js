@@ -9,7 +9,6 @@ import Managerlog from '@/applications/passport/Managerlog'
 import Permission from '@/applications/passport/Permission'
 import Resource from '@/applications/passport/Resource'
 import Role from '@/applications/passport/Role'
-import Region from '@/applications/passport/Region'
 import User from '@/applications/passport/User'
 
-export default {Attachment, AttachmentInfo, AttachmentPath, AttachmentVideo, Common, Entrance, Manager, Managerlog, Permission, Resource, Role, Region, User}
+export default {Attachment, AttachmentInfo, AttachmentPath, AttachmentVideo, Common, Entrance, Manager, Managerlog, Permission, Resource, Role, User}
